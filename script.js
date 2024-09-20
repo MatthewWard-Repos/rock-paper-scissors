@@ -31,25 +31,30 @@ const playGame = function () {
     let loser;
     let result;
 
-    human === computer
-      ? draw()
-      : (human === "rock" && computer === "scissors") ||
-        (human === "paper" && computer === "rock") ||
-        (human === "scissors" && computer === "paper")
-      ? ((winner = human),
-        (loser = computer),
-        (result = "win"),
-        endRound(winner, loser, result))
-      : ((winner = computer),
-        (loser = human),
-        (result = "lose"),
-        endRound(winner, loser, result));
+    if (human === computer) {
+      draw();
+    } else {
+      (human === "rock" && computer === "scissors") ||
+      (human === "paper" && computer === "rock") ||
+      (human === "scissors" && computer === "paper")
+        ? ((winner = human),
+          (loser = computer),
+          (result = "win"),
+          endRound(winner, loser, result))
+        : ((winner = computer),
+          (loser = human),
+          (result = "lose"),
+          endRound(winner, loser, result));
+    }
   };
   for (let i = 1; i <= 5; i++) {
     playRound();
   }
-  humanScore > computerScore
-    ? console.log(`You win! ${humanScore} to ${computerScore}`)
-    : console.log(`You lose! ${humanScore} t ${computerScore}`);
+
+  console.log(
+    `You ${
+      humanScore > computerScore ? "won" : "lost"
+    }! ${humanScore} to ${computerScore}`
+  );
 };
 playGame();
