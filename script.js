@@ -5,7 +5,8 @@ const getComputerChoice = function () {
   return choiceC === rock ? "rock" : choiceC === paper ? "paper" : "scissors";
 };
 const getHumanChoice = function () {
-  const choiceH = prompt("Choose rock, paper, or scissors!", "").toLowerCase();
+  const question = prompt("Choose rock, paper, or scissors!");
+  const choiceH = question ? question.toLowerCase() : null;
   return ["rock", "paper", "scissors"].includes(choiceH)
     ? choiceH
     : (alert("Not a valid choice!"), getHumanChoice());
