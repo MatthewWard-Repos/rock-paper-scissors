@@ -5,7 +5,7 @@ const getComputerChoice = function () {
   return choiceC === rock ? "rock" : choiceC === paper ? "paper" : "scissors";
 };
 const getHumanChoice = function () {
-  const choiceH = prompt("Choose rock, paper, or scissors!").toLowerCase();
+  const choiceH = prompt("Choose rock, paper, or scissors!", "").toLowerCase();
   return ["rock", "paper", "scissors"].includes(choiceH)
     ? choiceH
     : (alert("Not a valid choice!"), getHumanChoice());
@@ -37,7 +37,7 @@ const playGame = function () {
     };
 
     if (human === computer) {
-      result = "draw";
+      result = "drew";
     } else {
       (human === "rock" && computer === "scissors") ||
       (human === "paper" && computer === "rock") ||
@@ -53,7 +53,7 @@ const playGame = function () {
   }
 
   if (humanScore === computerScore) {
-    result = "draw";
+    result = "drew";
   } else {
     humanScore > computerScore ? (result = "won") : (result = "lost");
   }
