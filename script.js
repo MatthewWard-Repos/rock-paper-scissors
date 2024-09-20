@@ -21,11 +21,15 @@ const playGame = function () {
     const computer = getComputerChoice();
     const human = getHumanChoice();
     draw = function () {
-      console.log("Draw! No winner");
+      console.log(
+        `Draw! ${human} vs ${computer}, No winner, ${humanScore}/${computerScore}`
+      );
     };
     endRound = function (winner, loser, result) {
       winner === human ? humanScore++ : computerScore++;
-      console.log(`You ${result}! ${winner} beats ${loser}`);
+      console.log(
+        `You ${result}! ${winner} beats ${loser}, ${humanScore}/${computerScore}`
+      );
     };
     let winner;
     let loser;
@@ -50,11 +54,14 @@ const playGame = function () {
   for (let i = 1; i <= 5; i++) {
     playRound();
   }
-
-  console.log(
-    `You ${
-      humanScore > computerScore ? "won" : "lost"
-    }! ${humanScore} to ${computerScore}`
-  );
+  if (humanScore === computerScore) {
+    console.log(`You drew! ${humanScore} to ${computerScore}`);
+  } else {
+    console.log(
+      `You ${
+        humanScore > computerScore ? "won" : "lost"
+      }! ${humanScore} to ${computerScore}`
+    );
+  }
 };
 playGame();
