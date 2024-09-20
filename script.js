@@ -13,6 +13,7 @@ const getHumanChoice = function () {
 const playGame = function () {
   let humanScore = 0;
   let computerScore = 0;
+  let round = 1;
 
   const playRound = function () {
     const computer = getComputerChoice();
@@ -27,12 +28,13 @@ const playGame = function () {
       }
 
       console.log(
-        `You ${result} this round! ${human} ${
+        `You ${result} round ${round} of 5! ${human} ${
           human === computer ? "vs" : winner === human ? "beats" : "beaten by"
         } ${computer},${
           human === computer ? " No winner" : ""
         } ${humanScore}/${computerScore}`
       );
+      round++;
     };
 
     if (human === computer) {
