@@ -1,8 +1,6 @@
 const getComputerChoice = function () {
-  const rock = 1;
-  const paper = 2;
-  const choiceC = Math.floor(Math.random() * 3) + 1;
-  return choiceC === rock ? "rock" : choiceC === paper ? "paper" : "scissors";
+  const choiceC = Math.floor(Math.random() * 3);
+  return choiceC === 1 ? "rock" : choiceC === 2 ? "paper" : "scissors";
 };
 const getHumanChoice = function () {
   const question = prompt("Choose rock, paper, or scissors!");
