@@ -5,8 +5,8 @@ const getComputerChoice = function () {
   return choiceC === rock ? "rock" : choiceC === paper ? "paper" : "scissors";
 };
 const getHumanChoice = function () {
-  const choiceH = prompt("Choose rock, paper, or scissors!");
-  return ["rock", "paper", "scissors"].includes(choiceH.toLowerCase())
+  const choiceH = prompt("Choose rock, paper, or scissors!").toLowerCase();
+  return ["rock", "paper", "scissors"].includes(choiceH)
     ? choiceH
     : (alert("Not a valid choice!"), getHumanChoice());
 };
@@ -14,42 +14,38 @@ const getHumanChoice = function () {
 const playGame = function () {
   let humanScore = 0;
   let computerScore = 0;
-  let winner;
-  let loser;
-  let result;
 
   const playRound = function () {
     const computer = getComputerChoice();
     const human = getHumanChoice();
+    let winner = human;
+    let result;
+    endRound = function (winner, result) {
+      if (human === computer) {
+        null;
+      } else {
+        winner === human ? humanScore++ : computerScore++;
+      }
 
-    draw = function () {
       console.log(
-        `Draw! ${human} vs ${computer}, No winner, ${humanScore}/${computerScore}`
-      );
-    };
-
-    endRound = function (winner, loser, result) {
-      winner === human ? humanScore++ : computerScore++;
-      console.log(
-        `You ${result}! ${winner} beats ${loser}, ${humanScore}/${computerScore}`
+        `You ${result} this round! ${human} ${
+          human === computer ? "vs" : winner === human ? "beats" : "beaten by"
+        } ${computer},${
+          human === computer ? " No winner" : ""
+        } ${humanScore}/${computerScore}`
       );
     };
 
     if (human === computer) {
-      draw();
+      result = "draw";
     } else {
       (human === "rock" && computer === "scissors") ||
       (human === "paper" && computer === "rock") ||
       (human === "scissors" && computer === "paper")
-        ? ((winner = human),
-          (loser = computer),
-          (result = "win"),
-          endRound(winner, loser, result))
-        : ((winner = computer),
-          (loser = human),
-          (result = "lose"),
-          endRound(winner, loser, result));
+        ? ((winner = human), (result = "won"))
+        : ((winner = computer), (result = "lost"));
     }
+    endRound(winner, result);
   };
 
   for (let i = 1; i <= 5; i++) {
@@ -57,13 +53,15 @@ const playGame = function () {
   }
 
   if (humanScore === computerScore) {
-    console.log(`You drew! ${humanScore} to ${computerScore}`);
+    result = "draw";
   } else {
-    console.log(
-      `You ${
-        humanScore > computerScore ? "won" : "lost"
-      }! ${humanScore} to ${computerScore}`
-    );
+    humanScore > computerScore ? (result = "won") : (result = "lost");
   }
+  gameOver = function () {
+    console.log(
+      `You ${result} the game! Final Score ${humanScore}/${computerScore}`
+    );
+  };
+  gameOver();
 };
 playGame();
