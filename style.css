@@ -2,7 +2,30 @@
   height: 100vh;
   width: auto;
   display: flex;
+
   justify-content: center;
   align-items: center;
-  gap: 10%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10vh;
+  width: fit-content;
+}
+
+.results {
+  height: 20px;
+  text-align: center;
+  border: solid black;
+}
+
+.buttons {
+  display: flex;
+  gap: 5vw;
+}
+
+button {
+  width: 10vw;
 }
