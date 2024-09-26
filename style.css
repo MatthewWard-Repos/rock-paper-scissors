@@ -2,7 +2,6 @@
   height: 100vh;
   width: auto;
   display: flex;
-
   justify-content: center;
   align-items: center;
 }
@@ -27,7 +26,6 @@
 }
 
 .results {
-  height: 20px;
   text-align: center;
   border: solid black;
 }
