@@ -32,7 +32,7 @@ const playRound2 = function (choice) {
     if (!(humanScore === 5 || computerScore === 5)) {
       textBox.textContent = `You ${result} round ${round}! ${human} ${
         human === computer ? "vs" : winner === human ? "beats" : "beaten by"
-      } ${computer},${human === computer ? " No winner" : ""} `;
+      } ${computer}${human === computer ? " - No winner" : ""} `;
 
       round++;
     } else {
@@ -57,7 +57,7 @@ const button = document.querySelector(".button");
 buttons.addEventListener("click", function (e) {
   let target = e.target.id;
   if (["rock", "paper", "scissors"].includes(target)) {
-    playRound2(target);
+    playRound2(target.toUpperCase().slice(0, 1) + target.slice(1));
   }
 });
 // console.log("target".toUpperCase().slice(0, 1) + "target".slice(1));
