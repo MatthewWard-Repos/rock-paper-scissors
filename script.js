@@ -2,9 +2,6 @@ const getComputerChoice = function () {
   const choiceC = Math.floor(Math.random() * 3);
   return choiceC === 1 ? "rock" : choiceC === 2 ? "paper" : "scissors";
 };
-const getHumanChoice = function (choice) {
-  return choice;
-};
 
 let humanScore = 0;
 let computerScore = 0;
