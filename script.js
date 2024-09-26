@@ -14,12 +14,11 @@ const playRound2 = function (choice) {
   const computer = getComputerChoice();
   const human = choice;
   let winner = human;
+  const textBox = document.querySelector(".results");
 
   endRound = function (winner, result) {
     gameOver = function () {
-      console.log(
-        `You ${result} the game! Final Score ${humanScore}/${computerScore}`
-      );
+      textBox.textContent = `You ${result} the game! Final Score ${humanScore}/${computerScore}`;
       humanScore = 0;
       computerScore = 0;
       round = 1;
@@ -29,13 +28,11 @@ const playRound2 = function (choice) {
     } else {
       winner === human ? humanScore++ : computerScore++;
       if (!(humanScore === 5 || computerScore === 5)) {
-        console.log(
-          `You ${result} round ${round}! ${human} ${
-            human === computer ? "vs" : winner === human ? "beats" : "beaten by"
-          } ${computer},${
-            human === computer ? " No winner" : ""
-          } ${humanScore}/${computerScore}`
-        );
+        textBox.textContent = `You ${result} round ${round}! ${human} ${
+          human === computer ? "vs" : winner === human ? "beats" : "beaten by"
+        } ${computer},${
+          human === computer ? " No winner" : ""
+        } ${humanScore}/${computerScore}`;
         round++;
       } else {
         humanScore > computerScore ? (result = "won") : (result = "lost");
