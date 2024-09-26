@@ -2,14 +2,16 @@ const getComputerChoice = function () {
   const choiceC = Math.floor(Math.random() * 3);
   return choiceC === 1 ? "rock" : choiceC === 2 ? "paper" : "scissors";
 };
-const getHumanChoice = function () {
-  const question = prompt("Choose rock, paper, or scissors!");
-  const choiceH = question ? question.toLowerCase() : null;
-  return ["rock", "paper", "scissors"].includes(choiceH)
-    ? choiceH
-    : (alert("Not a valid choice!"), getHumanChoice());
+const getHumanChoice = function (choice) {
+  return choice;
 };
 
+document.addEventListener("click", function (e) {
+  let target = e.target.id;
+  if (["rock", "paper", "scissors"].includes(target)) {
+    getHumanChoice(target);
+  }
+});
 const playGame = function () {
   let humanScore = 0;
   let computerScore = 0;
@@ -49,9 +51,9 @@ const playGame = function () {
     endRound(winner, result);
   };
 
-  for (let i = 1; i <= 5; i++) {
-    playRound();
-  }
+  // for (let i = 1; i <= 5; i++) {
+  //   playRound();
+  // }
 
   if (humanScore === computerScore) {
     result = "drew";
@@ -65,4 +67,4 @@ const playGame = function () {
   };
   gameOver();
 };
-playGame();
+// playGame();
