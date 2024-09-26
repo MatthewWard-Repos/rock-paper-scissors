@@ -1,6 +1,6 @@
 const getComputerChoice = function () {
   const choiceC = Math.floor(Math.random() * 3);
-  return choiceC === 1 ? "rock" : choiceC === 2 ? "paper" : "scissors";
+  return choiceC === 1 ? "Rock" : choiceC === 2 ? "Paper" : "Scissors";
 };
 
 let humanScore = 0;
@@ -12,6 +12,8 @@ const playRound2 = function (choice) {
   const human = choice;
   let winner = human;
   const textBox = document.querySelector(".results");
+  const textHuman = document.querySelector(".human");
+  const textComputer = document.querySelector(".computer");
 
   endRound = function (winner, result) {
     gameOver = function () {
@@ -24,17 +26,18 @@ const playRound2 = function (choice) {
       null;
     } else {
       winner === human ? humanScore++ : computerScore++;
-      if (!(humanScore === 5 || computerScore === 5)) {
-        textBox.textContent = `You ${result} round ${round}! ${human} ${
-          human === computer ? "vs" : winner === human ? "beats" : "beaten by"
-        } ${computer},${
-          human === computer ? " No winner" : ""
-        } ${humanScore}/${computerScore}`;
-        round++;
-      } else {
-        humanScore > computerScore ? (result = "won") : (result = "lost");
-        gameOver();
-      }
+    }
+    textHuman.textContent = humanScore;
+    textComputer.textContent = computerScore;
+    if (!(humanScore === 5 || computerScore === 5)) {
+      textBox.textContent = `You ${result} round ${round}! ${human} ${
+        human === computer ? "vs" : winner === human ? "beats" : "beaten by"
+      } ${computer},${human === computer ? " No winner" : ""} `;
+
+      round++;
+    } else {
+      humanScore > computerScore ? (result = "won") : (result = "lost");
+      gameOver();
     }
   };
   if (human === computer) {
@@ -49,9 +52,12 @@ const playRound2 = function (choice) {
   endRound(winner, result);
 };
 // playGame();
-document.addEventListener("click", function (e) {
+const button = document.querySelector(".button");
+
+buttons.addEventListener("click", function (e) {
   let target = e.target.id;
   if (["rock", "paper", "scissors"].includes(target)) {
     playRound2(target);
   }
 });
+// console.log("target".toUpperCase().slice(0, 1) + "target".slice(1));
