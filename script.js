@@ -1,5 +1,5 @@
 const init = function () {
-  const container = document.querySelector(".container");
+  const body = document.querySelector("body");
   const content = document.querySelector(".content");
   const textBox = document.querySelector(".results");
   const textHuman = document.querySelector(".human");
@@ -8,6 +8,9 @@ const init = function () {
   let computerScore = 0;
   let round = 1;
   let finished = false;
+  body.style.backgroundColor = "rgb(44, 42, 46)";
+  textBox.style.borderColor = "white";
+  content.style.color = "white";
   const getComputerChoice = function () {
     const choiceC = Math.floor(Math.random() * 3);
     return choiceC === 1 ? "Rock" : choiceC === 2 ? "Paper" : "Scissors";
@@ -20,9 +23,9 @@ const init = function () {
     textHuman.textContent = humanScore;
     textComputer.textContent = computerScore;
     textBox.textContent = "Let's Play!";
-    textBox.style.borderColor = "black";
-    container.style.backgroundColor = "white";
-    content.style.color = "black";
+    textBox.style.borderColor = "white";
+    body.style.backgroundColor = "rgb(44, 42, 46)";
+    content.style.color = "white";
   };
 
   const playRound2 = function (choice) {
@@ -35,9 +38,9 @@ const init = function () {
       gameOver = function () {
         finished = true;
         if (winner === human) {
-          container.style.backgroundColor = "green";
+          body.style.backgroundColor = "green";
         } else {
-          container.style.backgroundColor = "red";
+          body.style.backgroundColor = "red";
         }
         content.style.color = "white";
         textBox.style.borderColor = "white";

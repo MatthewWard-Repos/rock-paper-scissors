@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 10vh;
-  width: fit-content;
+  width: 50vw;
 }
 
 .scores {
@@ -30,9 +30,11 @@
   border: solid black;
 }
 
-.buttons {
+#buttons {
   display: flex;
-  gap: 5vw;
+  justify-content: center;
+  width: 50vw;
+  gap: 1vw;
 }
 
 button {
