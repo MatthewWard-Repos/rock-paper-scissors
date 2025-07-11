@@ -2,4 +2,4 @@
 
 A rock paper scissors game
 
-https://matthewward-repos.github.io/rock-paper-scissors/ (Open in new tab)
+<a href='https://matthewward-repos.github.io/rock-paper-scissors/ '>Rock Paper Scissors</a>(Open in new tab)
