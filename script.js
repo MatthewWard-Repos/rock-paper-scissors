@@ -1,7 +1,13 @@
 const init = function () {
+  const container = document.querySelector(".container");
+  const content = document.querySelector(".content");
+  const textBox = document.querySelector(".results");
+  const textHuman = document.querySelector(".human");
+  const textComputer = document.querySelector(".computer");
   let humanScore = 0;
   let computerScore = 0;
   let round = 1;
+  let finished = false;
   const getComputerChoice = function () {
     const choiceC = Math.floor(Math.random() * 3);
     return choiceC === 1 ? "Rock" : choiceC === 2 ? "Paper" : "Scissors";
@@ -10,6 +16,13 @@ const init = function () {
     humanScore = 0;
     computerScore = 0;
     round = 1;
+    finished = false;
+    textHuman.textContent = humanScore;
+    textComputer.textContent = computerScore;
+    textBox.textContent = "Let's Play!";
+    textBox.style.borderColor = "black";
+    container.style.backgroundColor = "white";
+    content.style.color = "black";
   };
 
   const playRound2 = function (choice) {
@@ -17,16 +30,21 @@ const init = function () {
     const human = choice;
     let winner = human;
     let result;
-    const textBox = document.querySelector(".results");
-    const textHuman = document.querySelector(".human");
-    const textComputer = document.querySelector(".computer");
 
     endRound = function (winner, result) {
       gameOver = function () {
+        finished = true;
+        if (winner === human) {
+          container.style.backgroundColor = "green";
+        } else {
+          container.style.backgroundColor = "red";
+        }
+        content.style.color = "white";
+        textBox.style.borderColor = "white";
         textBox.textContent = `You ${result} the game! ${human} ${
           human === computer ? "vs" : winner === human ? "beats" : "beaten by"
         } ${computer}`;
-        reset();
+        setTimeout(reset, 3000);
       };
       getWinnerResult = function () {
         if (human === computer) {
@@ -71,13 +89,15 @@ const init = function () {
     endRound(winner, result);
   };
   // playGame();
-  const button = document.querySelector(".button");
+  const button = document.querySelectorAll(".button");
 
-  button.addEventListener("click", function (e) {
-    let target = e.target.id;
-    if (["rock", "paper", "scissors"].includes(target)) {
-      playRound2(target.toUpperCase().slice(0, 1) + target.slice(1));
-    }
-  });
+  button.forEach((btn) =>
+    btn.addEventListener("click", function (e) {
+      let target = e.target.id;
+      if (["rock", "paper", "scissors"].includes(target) && finished === false) {
+        playRound2(target.toUpperCase().slice(0, 1) + target.slice(1));
+      }
+    })
+  );
 };
 init();
